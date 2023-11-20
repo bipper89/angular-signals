@@ -1,0 +1,43 @@
+<div class="w-full md:grid md:grid-cols-2 gap-4 mt-4">
+  <div class="card">
+    <img class="m-auto w-96 h-96" [src]="img" alt="form-img" />
+  </div>
+  <div class="card">
+    <form [formGroup]="userForm" class="mt-4 p-4">
+      <div class="mb-4">
+        <label for="fullName"> Fullname: </label>
+        <input
+          formControlName="fullname"
+          type="text"
+          id="fullName"
+          placeholder="Fullname"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="position"> Position: </label>
+        <select formControlName="position" id="position">
+          @for (position of options().positions; track position) {
+          <option [value]="position.value">{{ position.label }}</option>
+          }
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="nacionality"> Nacionality: </label>
+        <input
+          formControlName="nacionality"
+          type="text"
+          id="nacionality"
+          placeholder="Nacionality"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="image"> Image: </label>
+        <select formControlName="image" id="image">
+          @for (img of options().images; track img) {
+          <option [value]="img.value">{{ img.label }}</option>
+          }
+        </select>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="grid lg:grid-cols-4 sm:grid-cols-2 flex gap-2 mt-4">
+  @for (user of users; track users) {
+  <app-card [user]="user" />
+  } @empty {
+  <div class="card col-span-4 p-8 w-full text-center">No users yet...</div>
+  }
+</div>
