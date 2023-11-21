@@ -1,4 +1,4 @@
-import { Component, Input, inject } from "@angular/core";
+import { Component, Input, OnInit, computed, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { User } from "../../models";
 import { CardComponent } from "../card/card.component";
@@ -12,5 +12,6 @@ import { UserService } from "../../services/user.service";
   styleUrl: "./card-list.component.css",
 })
 export class CardListComponent {
-  users: User[] = inject(UserService).viewModel().users;
+  private userService = inject(UserService);
+  users = computed(() => this.userService.viewModel().users);
 }

@@ -1,19 +1,23 @@
 @if (user) {
-<figure
-  class="card max-w-sm sm:flex md:p-0 mx-auto"
-  (click)="onSelectUser()"
-  (dblclick)="onDeleteUser()"
->
+<figure class="card max-w-sm sm:flex md:p-0 mx-auto">
   <img
     class="object-fill w-20 h-20 m-auto p-2 rounded"
     [src]="user.img"
     alt="card-img"
   />
-  <div class="pt-6 md:p-4 text-center md:text-left space-y-4">
+  <div class="flex-1 pt-6 md:p-4 text-center md:text-left space-y-4">
     <figcaption class="font-medium">
       <div class="text-sky-500">{{ user.fullname }}</div>
       <div class="text-slate-700">
         {{ user.position }}, {{ user.nacionality }}.
+      </div>
+      <div class="flex gap-2 mt-1">
+        <button type="button" (click)="onSelectUser()" class="btn btn-warning">
+          Editar
+        </button>
+        <button type="button" (click)="onDeleteUser()" class="btn btn-danger">
+          Eliminar
+        </button>
       </div>
     </figcaption>
   </div>

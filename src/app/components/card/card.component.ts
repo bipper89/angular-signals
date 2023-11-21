@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { User } from "../../models";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "app-card",
@@ -12,8 +13,15 @@ import { User } from "../../models";
 export class CardComponent {
   @Input() user: User | undefined = undefined;
   @Input() index: number | null = null;
+  private userService = inject(UserService);
 
-  onSelectUser() {}
+  onSelectUser() {
+    if (this.index === null) return;
+    this.userService.read(this.index);
+  }
 
-  onDeleteUser() {}
+  onDeleteUser() {
+    if (this.index === null) return;
+    this.userService.delete(this.index);
+  }
 }

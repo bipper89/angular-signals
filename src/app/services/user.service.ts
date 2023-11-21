@@ -18,6 +18,7 @@ export class UserService {
   }
 
   read(index: number) {
+    console.log(index);
     this.user.set(this.users()[index]);
     this.index.set(index);
   }
@@ -34,5 +35,7 @@ export class UserService {
       ...users.slice(0, index),
       ...users.slice(index + 1),
     ]);
+    this.user.set(undefined);
+    this.index.set(null);
   }
 }

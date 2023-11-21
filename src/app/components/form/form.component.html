@@ -1,9 +1,9 @@
 <div class="w-full md:grid md:grid-cols-2 gap-4 mt-4">
-  <div class="card">
-    <img class="m-auto w-96 h-96" [src]="img" alt="form-img" />
+  <div class="card flex items-center justify-center">
+    <img class="w-96 h-96" [src]="img" alt="form-img" />
   </div>
   <div class="card">
-    <form [formGroup]="userForm" class="mt-4 p-4">
+    <form [formGroup]="userForm" (ngSubmit)="onSave()" class="mt-4 p-4">
       <div class="mb-4">
         <label for="fullName"> Fullname: </label>
         <input
@@ -32,11 +32,34 @@
       </div>
       <div class="mb-4">
         <label for="image"> Image: </label>
-        <select formControlName="image" id="image">
+        <select formControlName="img" id="image">
           @for (img of options().images; track img) {
           <option [value]="img.value">{{ img.label }}</option>
           }
         </select>
+      </div>
+      <div class="flex gap-2">
+        @if (!user()) {
+        <button
+          type="submit"
+          [disabled]="userForm.invalid"
+          class="btn btn-primary"
+        >
+          Agregar
+        </button>
+        } @else {
+        <button
+          type="button"
+          [disabled]="userForm.invalid"
+          class="btn btn-warning"
+          (click)="onEdit()"
+        >
+          Editar
+        </button>
+        }
+        <button type="button" class="btn btn-info" (click)="onReset()">
+          Reset
+        </button>
       </div>
     </form>
   </div>

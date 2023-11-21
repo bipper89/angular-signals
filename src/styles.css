@@ -16,6 +16,30 @@
 
 @layer components {
     .card {
-        @apply bg-slate-800 rounded-xl;
+        @apply bg-slate-800 rounded-xl cursor-pointer hover:opacity-75;
+    }
+
+    .btn {
+        @apply p-2 w-full border-none rounded-md font-bold text-sm disabled:opacity-75
+    }
+
+    .btn-primary {
+        @apply bg-rose-700 text-white enabled:hover:bg-rose-500
+    }
+
+    .btn-success {
+        @apply bg-lime-700 text-white enabled:hover:bg-lime-500
+    }
+
+    .btn-warning {
+        @apply bg-amber-700 text-white enabled:hover:bg-amber-500
+    }
+
+    .btn-danger {
+        @apply bg-red-700 text-white enabled:hover:bg-red-500
+    }
+
+    .btn-info {
+        @apply bg-cyan-700 text-white enabled:hover:bg-cyan-500;
     }
 }
